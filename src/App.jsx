@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./component/login.component";
-import Welcome from "./routes/welcome.component";
+import WelcomeLayout from "./component/welcome-layout-component";
 import Navbarr from "./component/navbar.component";
 import Home from "./component/home.component";
 import Register from "./component/register.component";
@@ -14,14 +14,10 @@ function App() {
     <Fragment>
       <ToastContainer />
       <Routes>
-        <Route path="/login" element={<Welcome />}>
-          <Route index element={<Login />} />
-        </Route>
-        <Route path="/register" element={<Welcome />}>
-          <Route index element={<Register />} />
-        </Route>
-        <Route path="/reset" element={<Welcome />}>
-          <Route index element={<Reset />} />
+        <Route path="/" element={<WelcomeLayout />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="reset" element={<Reset />} />
         </Route>
         <Route path="/" element={<Navbarr />}>
           <Route index element={<Home />} />

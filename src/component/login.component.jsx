@@ -9,14 +9,15 @@ import AnimatedPage from "./welcome-page-animation.component";
 const defaultFormFields = {
   email: "",
   password: "",
-  remember: true
+  remember: true,
 };
 
 const Login = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password, remember } = formFields;
   const navigate = useNavigate();
-  const notifyLoginFailed = () => toast.error("Username/email or password incorrect!");
+  const notifyLoginFailed = () =>
+    toast.error("Username/email or password incorrect!");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,11 +27,17 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      login(email, password, remember, () => {
-        navigate("/");
-      }, () => { 
-        notifyLoginFailed();
-      });
+      login(
+        email,
+        password,
+        remember,
+        async () => {
+          await navigate("/");
+        },
+        () => {
+          notifyLoginFailed();
+        }
+      );
     } catch (error) {
       alert(error.message);
     }
