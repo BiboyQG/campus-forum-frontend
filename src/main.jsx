@@ -7,6 +7,7 @@ import "./index.css";
 import axios from "axios";
 import AuthRoute from "./utils/AuthRoute.jsx";
 import "react-toastify/dist/ReactToastify.css";
+import { UserProvider } from "./contexts/user.context.jsx";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <NextUIProvider>
         <AuthRoute>
-          <App />
+          <UserProvider>
+            <App />
+          </UserProvider>
         </AuthRoute>
       </NextUIProvider>
     </BrowserRouter>

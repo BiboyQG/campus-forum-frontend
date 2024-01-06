@@ -1,10 +1,11 @@
 import { Button, Checkbox, Divider } from "@nextui-org/react";
 import FormInput from "./form-input/form-input.component";
-import { useState } from "react";
-import { login } from "../net";
+import { useState, useContext } from "react";
+import { get, login } from "../net";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AnimatedPage from "./welcome-page-animation.component";
+import { UserContext } from "../contexts/user.context";
 
 const defaultFormFields = {
   email: "",
@@ -13,6 +14,7 @@ const defaultFormFields = {
 };
 
 const Login = () => {
+  const {setUser} = useContext(UserContext);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password, remember } = formFields;
   const navigate = useNavigate();
@@ -32,6 +34,9 @@ const Login = () => {
         password,
         remember,
         async () => {
+          await get("/api/user/info", (data) => { 
+            setUser(data);
+          })
           await navigate("/");
         },
         () => {
