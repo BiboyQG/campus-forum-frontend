@@ -23,7 +23,6 @@ import { AiOutlineProfile, AiOutlineLock } from "react-icons/ai";
 import { IoMailOutline } from "react-icons/io5";
 import { IoMdExit } from "react-icons/io";
 import { MdOutlineFeedback } from "react-icons/md";
-import Forum from "./forum.component";
 
 export default function Navbarr() {
   const { user } = useContext(UserContext);
@@ -68,7 +67,7 @@ export default function Navbarr() {
   return (
     <Fragment>
       <Navbar isBordered>
-        <NavbarContent justify="start" as="div" onClick={() => navigate('/')}>
+        <NavbarContent justify="start" as="div" onClick={() => navigate("/")}>
           <NavbarBrand className="mr-4 cursor-pointer">
             <AcmeLogo />
             <p className="hidden sm:block font-bold text-inherit">UIUC</p>
@@ -165,9 +164,9 @@ export default function Navbarr() {
       </Navbar>
       <div className="flex">
         <Sidebar />
-        <div className="ml-[77px] flex-1">
+        <div className="ml-[77px] flex-1 bg-third dark:bg-fourth">
           <ScrollShadow size={0} className="h-[calc(100vh-64px)]">
-            <div className="h-full bg-third flex dark:bg-fourth">
+            <div className="">
               <Outlet />
             </div>
           </ScrollShadow>
