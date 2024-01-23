@@ -21,6 +21,8 @@ and then:
 yarn dev
 ```
 
+You can preview the scene by clicking [here](https://banghao.studio).
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
